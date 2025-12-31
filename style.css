@@ -1,0 +1,194 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;900&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(ellipse at top, #0b1020 0%, #0f1724 40%, #0b1220 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Subtle starry texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 200px 200px, 60px 60px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: overlay;
+}
+
+/* Canvas fills screen behind content */
+#fireworksCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Centered card */
+.message-container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 18px;
+  padding: 3rem 4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px) saturate(120%);
+  text-align: center;
+  transform: translateY(-10px);
+  animation: floatCard 6s ease-in-out infinite;
+  max-width: 900px;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(-8px); }
+  50% { transform: translateY(4px); }
+  100% { transform: translateY(-8px); }
+}
+
+.floating-text {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  color: #fff;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  text-shadow:
+    0 8px 30px rgba(0,0,0,0.7),
+    0 0 12px rgba(255, 200, 60, 0.08),
+    0 0 30px rgba(255, 120, 40, 0.06);
+  animation: float 4.5s ease-in-out infinite;
+}
+
+.welcome-row {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.9rem;
+  /* Sage pill */
+  background: linear-gradient(90deg, #f3fbf3, #e6f5ea);
+  border: 1px solid rgba(122,168,111,0.12);
+  border-radius: 999px;
+  color: #14361b;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(26,83,34,0.06);
+  backdrop-filter: blur(4px);
+  transform: translateY(-4px);
+  animation: badgePop 2.2s ease-in-out infinite;
+}
+
+.badge-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  overflow: visible;
+}
+
+.badge-icon .comet-tail {
+  transform-origin: center;
+  filter: blur(0.2px);
+  animation: tailFlow 1.6s linear infinite;
+}
+
+.badge-icon .comet-core {
+  transform-origin: center;
+  animation: corePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes tailFlow {
+  0% { transform: translateX(0) scaleX(1); opacity: 1; }
+  50% { transform: translateX(2px) scaleX(1.03); opacity: 0.75; }
+  100% { transform: translateX(4px) scaleX(1.06); opacity: 0.4; }
+}
+
+@keyframes corePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.welcome-text {
+  display: inline-block;
+  background: linear-gradient(90deg,#4f8a4a,#7aa86f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+
+.subtitle {
+  margin: 0.8rem 0 0;
+  color: rgba(20,40,20,0.78);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  opacity: 0.95;
+  letter-spacing: 0.6px;
+}
+
+.signature {
+  margin: 0.4rem 0 0;
+  color: rgba(20,40,20,0.75);
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  font-style: italic;
+  opacity: 0.95;
+  letter-spacing: 0.3px;
+}
+
+@keyframes badgePop {
+  0% { transform: translateY(-4px) scale(0.98); opacity: 0.95; }
+  50% { transform: translateY(0) scale(1.02); opacity: 1; }
+  100% { transform: translateY(-4px) scale(0.98); opacity: 0.95; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.subtitle {
+  margin: 0.8rem 0 0;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  opacity: 0.95;
+  letter-spacing: 0.6px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 520px) {
+  .message-card {
+    padding: 2rem;
+  }
+  .floating-text { font-size: clamp(1.8rem, 10vw, 3rem); }
+  .floating-text span { font-size: 1rem; letter-spacing: 1.5px; }
+}
